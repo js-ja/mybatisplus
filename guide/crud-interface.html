@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>CRUD 接口 | MyBatis-Plus</title>
+    <meta name="description" content="为简化开发而生">
+    <link rel="icon" href="../favicon.ico">
+    
+    <link rel="preload" href="../assets/css/0.styles.c78108d6.css" as="style"><link rel="preload" href="../assets/js/app.1ef3374c.js" as="script"><link rel="preload" href="../assets/js/2.adda90a1.js" as="script"><link rel="preload" href="../assets/js/47.9e6e4107.js" as="script"><link rel="prefetch" href="../assets/js/10.cae95103.js"><link rel="prefetch" href="../assets/js/11.c54c1bc6.js"><link rel="prefetch" href="../assets/js/12.3c94cd3d.js"><link rel="prefetch" href="../assets/js/13.16d28336.js"><link rel="prefetch" href="../assets/js/14.b399db0b.js"><link rel="prefetch" href="../assets/js/15.5bda3a3a.js"><link rel="prefetch" href="../assets/js/16.e05b7585.js"><link rel="prefetch" href="../assets/js/17.0243c7e7.js"><link rel="prefetch" href="../assets/js/18.e80540b2.js"><link rel="prefetch" href="../assets/js/19.0d7e65fb.js"><link rel="prefetch" href="../assets/js/20.c388b199.js"><link rel="prefetch" href="../assets/js/21.66aba437.js"><link rel="prefetch" href="../assets/js/22.c9cff371.js"><link rel="prefetch" href="../assets/js/23.d971b499.js"><link rel="prefetch" href="../assets/js/24.aaff1ce2.js"><link rel="prefetch" href="../assets/js/25.4bd8ff38.js"><link rel="prefetch" href="../assets/js/26.7a22f633.js"><link rel="prefetch" href="../assets/js/27.9c1a6158.js"><link rel="prefetch" href="../assets/js/28.7fa69d08.js"><link rel="prefetch" href="../assets/js/29.b4f2dfc5.js"><link rel="prefetch" href="../assets/js/3.ac67e7f8.js"><link rel="prefetch" href="../assets/js/30.ca7b17a2.js"><link rel="prefetch" href="../assets/js/31.898669d1.js"><link rel="prefetch" href="../assets/js/32.94ef033e.js"><link rel="prefetch" href="../assets/js/33.02f8df0e.js"><link rel="prefetch" href="../assets/js/34.9329d2e9.js"><link rel="prefetch" href="../assets/js/35.449cc92b.js"><link rel="prefetch" href="../assets/js/36.42b7a9a3.js"><link rel="prefetch" href="../assets/js/37.39a5ae43.js"><link rel="prefetch" href="../assets/js/38.56b65462.js"><link rel="prefetch" href="../assets/js/39.696c7399.js"><link rel="prefetch" href="../assets/js/4.ef8e3c46.js"><link rel="prefetch" href="../assets/js/40.47384372.js"><link rel="prefetch" href="../assets/js/41.80c51d6a.js"><link rel="prefetch" href="../assets/js/42.bdf5213a.js"><link rel="prefetch" href="../assets/js/43.a1c99f8e.js"><link rel="prefetch" href="../assets/js/44.c64ac7e3.js"><link rel="prefetch" href="../assets/js/45.67771399.js"><link rel="prefetch" href="../assets/js/46.eda80e81.js"><link rel="prefetch" href="../assets/js/48.805b1ccc.js"><link rel="prefetch" href="../assets/js/49.4baa0fa1.js"><link rel="prefetch" href="../assets/js/5.c5e9c5bb.js"><link rel="prefetch" href="../assets/js/50.bf60ef0b.js"><link rel="prefetch" href="../assets/js/51.94d3da70.js"><link rel="prefetch" href="../assets/js/52.a0341e2f.js"><link rel="prefetch" href="../assets/js/53.6576081b.js"><link rel="prefetch" href="../assets/js/54.c1ebec75.js"><link rel="prefetch" href="../assets/js/55.f5cb3b02.js"><link rel="prefetch" href="../assets/js/56.98de9535.js"><link rel="prefetch" href="../assets/js/57.8c3a58a4.js"><link rel="prefetch" href="../assets/js/58.6353ef86.js"><link rel="prefetch" href="../assets/js/59.b32f9fd5.js"><link rel="prefetch" href="../assets/js/6.325d43e6.js"><link rel="prefetch" href="../assets/js/60.b95a57a9.js"><link rel="prefetch" href="../assets/js/61.fc67fae2.js"><link rel="prefetch" href="../assets/js/62.a5a2f65b.js"><link rel="prefetch" href="../assets/js/63.2cc51395.js"><link rel="prefetch" href="../assets/js/64.53885924.js"><link rel="prefetch" href="../assets/js/65.a29cdab7.js"><link rel="prefetch" href="../assets/js/66.26217340.js"><link rel="prefetch" href="../assets/js/67.9e8db4cb.js"><link rel="prefetch" href="../assets/js/68.6534be87.js"><link rel="prefetch" href="../assets/js/7.0fe4b671.js"><link rel="prefetch" href="../assets/js/8.5537f175.js"><link rel="prefetch" href="../assets/js/9.4a73cf79.js">
+    <link rel="stylesheet" href="../assets/css/0.styles.c78108d6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="../index.html" class="home-link router-link-active"><!----> <span class="site-name">MyBatis-Plus</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="index.html" class="nav-link router-link-active">指南</a></div><div class="nav-item"><a href="../config/index.html" class="nav-link">配置</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">生态</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://gitee.com/baomidou/kisso" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Kisso 单点登录
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/baomidou/lock4j-spring-boot-starter" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Lock4j 分布式锁
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/baomidou/dynamic-datasource-spring-boot-starter" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Dynamic Datasource 动态数据源
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/baomidou/jobs" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Jobs 分布式任务调度平台
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div><div class="nav-item"><a href="https://github.com/baomidou/mybatis-plus/blob/3.0/CHANGELOG.md" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  更新日志
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">3.0 文档</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="../index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  3.X 文档
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://baomidou.gitee.io/mybatis-plus-doc/#/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  2.X 文档
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="crud-interface.html" class="nav-link router-link-exact-active router-link-active">简体中文</a></li><li class="dropdown-item"><!----> <a href="../en/guide/crud-interface.html" class="nav-link">English</a></li></ul></div></div> <a href="https://github.com/baomidou/mybatis-plus" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="index.html" class="nav-link router-link-active">指南</a></div><div class="nav-item"><a href="../config/index.html" class="nav-link">配置</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">生态</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://gitee.com/baomidou/kisso" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Kisso 单点登录
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/baomidou/lock4j-spring-boot-starter" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Lock4j 分布式锁
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/baomidou/dynamic-datasource-spring-boot-starter" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Dynamic Datasource 动态数据源
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/baomidou/jobs" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Jobs 分布式任务调度平台
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div><div class="nav-item"><a href="https://github.com/baomidou/mybatis-plus/blob/3.0/CHANGELOG.md" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  更新日志
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">3.0 文档</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="../index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  3.X 文档
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://baomidou.gitee.io/mybatis-plus-doc/#/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  2.X 文档
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="crud-interface.html" class="nav-link router-link-exact-active router-link-active">简体中文</a></li><li class="dropdown-item"><!----> <a href="../en/guide/crud-interface.html" class="nav-link">English</a></li></ul></div></div> <a href="https://github.com/baomidou/mybatis-plus" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>快速入门</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="index.html" class="sidebar-link">简介</a></li><li><a href="quick-start.html" class="sidebar-link">快速开始</a></li><li><a href="install.html" class="sidebar-link">安装</a></li><li><a href="config.html" class="sidebar-link">配置</a></li><li><a href="annotation.html" class="sidebar-link">注解</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>核心功能</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="generator.html" class="sidebar-link">代码生成器</a></li><li><a href="crud-interface.html" class="active sidebar-link">CRUD 接口</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="crud-interface.html#mapper-crud-%E6%8E%A5%E5%8F%A3" class="sidebar-link">Mapper CRUD 接口</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="crud-interface.html#insert" class="sidebar-link">insert</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#deletebyid" class="sidebar-link">deleteById</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#deletebymap" class="sidebar-link">deleteByMap</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#delete" class="sidebar-link">delete</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#deletebatchids" class="sidebar-link">deleteBatchIds</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#updatebyid" class="sidebar-link">updateById</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#update" class="sidebar-link">update</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#selectbyid" class="sidebar-link">selectById</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#selectbatchids" class="sidebar-link">selectBatchIds</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#selectbymap" class="sidebar-link">selectByMap</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#selectone" class="sidebar-link">selectOne</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#selectcount" class="sidebar-link">selectCount</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#selectlist" class="sidebar-link">selectList</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#selectmaps" class="sidebar-link">selectMaps</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#selectobjs" class="sidebar-link">selectObjs</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#selectpage" class="sidebar-link">selectPage</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#selectmapspage" class="sidebar-link">selectMapsPage</a></li></ul></li><li class="sidebar-sub-header"><a href="crud-interface.html#service-crud-%E6%8E%A5%E5%8F%A3" class="sidebar-link">Service CRUD 接口</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="crud-interface.html#save" class="sidebar-link">save</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#savebatch" class="sidebar-link">saveBatch</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#savebatch-2" class="sidebar-link">saveBatch</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#saveorupdatebatch" class="sidebar-link">saveOrUpdateBatch</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#saveorupdatebatch-2" class="sidebar-link">saveOrUpdateBatch</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#removebyid" class="sidebar-link">removeById</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#removebymap" class="sidebar-link">removeByMap</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#remove" class="sidebar-link">remove</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#removebyids" class="sidebar-link">removeByIds</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#updatebyid-2" class="sidebar-link">updateById</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#update-2" class="sidebar-link">update</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#updatebatchbyid" class="sidebar-link">updateBatchById</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#saveorupdate" class="sidebar-link">saveOrUpdate</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#getbyid" class="sidebar-link">getById</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#listbyids" class="sidebar-link">listByIds</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#listbymap" class="sidebar-link">listByMap</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#getone" class="sidebar-link">getOne</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#getmap" class="sidebar-link">getMap</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#getobj" class="sidebar-link">getObj</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#count" class="sidebar-link">count</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#list" class="sidebar-link">list</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#page" class="sidebar-link">page</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#listmaps" class="sidebar-link">listMaps</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#listobjs" class="sidebar-link">listObjs</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#pagemaps" class="sidebar-link">pageMaps</a></li></ul></li><li class="sidebar-sub-header"><a href="crud-interface.html#mapper-%E5%B1%82-%E9%80%89%E8%A3%85%E4%BB%B6" class="sidebar-link">mapper 层 选装件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="crud-interface.html#insertbatchsomecolumn" class="sidebar-link">insertBatchSomeColumn</a></li><li class="sidebar-sub-header"><a href="crud-interface.html#deletebyidwithfill" class="sidebar-link">deleteByIdWithFill</a></li></ul></li></ul></li><li><a href="wrapper.html" class="sidebar-link">条件构造器</a></li><li><a href="page.html" class="sidebar-link">分页插件</a></li><li><a href="sequence.html" class="sidebar-link">Sequence主键</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>插件扩展</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="hot-loading.html" class="sidebar-link">热加载</a></li><li><a href="logic-delete.html" class="sidebar-link">逻辑删除</a></li><li><a href="enum.html" class="sidebar-link">通用枚举</a></li><li><a href="typehandler.html" class="sidebar-link">字段类型处理器</a></li><li><a href="auto-fill-metainfo.html" class="sidebar-link">自动填充功能</a></li><li><a href="sql-injector.html" class="sidebar-link">Sql 注入器</a></li><li><a href="block-attack-sql-parser.html" class="sidebar-link">攻击 SQL 阻断解析器</a></li><li><a href="performance-analysis-plugin.html" class="sidebar-link">性能分析插件</a></li><li><a href="p6spy.html" class="sidebar-link">执行 SQL 分析打印</a></li><li><a href="optimistic-locker-plugin.html" class="sidebar-link">乐观锁插件</a></li><li><a href="dynamic-datasource.html" class="sidebar-link">动态数据源</a></li><li><a href="dts.html" class="sidebar-link">分布式事务</a></li><li><a href="tenant.html" class="sidebar-link">多租户 SQL 解析器</a></li><li><a href="dynamic-table-name-parser.html" class="sidebar-link">动态表名 SQL 解析器</a></li><li><a href="mybatisx-idea-plugin.html" class="sidebar-link">MybatisX 快速开发插件</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>FAQ</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="faq.html" class="sidebar-link">常见问题</a></li><li><a href="donate.html" class="sidebar-link">捐赠支持</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="crud-接口"><a href="crud-interface.html#crud-%E6%8E%A5%E5%8F%A3" aria-hidden="true" class="header-anchor">#</a> CRUD 接口</h1> <h2 id="mapper-crud-接口"><a href="crud-interface.html#mapper-crud-%E6%8E%A5%E5%8F%A3" aria-hidden="true" class="header-anchor">#</a> Mapper CRUD 接口</h2> <div class="tip custom-block"><p class="custom-block-title">说明:</p> <ul><li>通用 CRUD 封装<a href="https://gitee.com/baomidou/mybatis-plus/blob/3.0/mybatis-plus-core/src/main/java/com/baomidou/mybatisplus/core/mapper/BaseMapper.java" target="_blank" rel="noopener noreferrer">BaseMapper<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>接口，为 <code>Mybatis-Plus</code> 启动时自动解析实体表关系映射转换为 <code>Mybatis</code> 内部对象注入容器</li> <li>泛型 <code>T</code> 为任意实体对象</li> <li>参数 <code>Serializable</code> 为任意类型主键 <code>Mybatis-Plus</code> 不推荐使用复合主键约定每一张表都有自己的唯一 <code>id</code> 主键</li> <li>对象 <code>Wrapper</code> 为 <a href="wrapper.html">条件构造器</a></li></ul></div> <h3 id="insert"><a href="crud-interface.html#insert" aria-hidden="true" class="header-anchor">#</a> insert</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 插入一条记录
+ * &lt;/p&gt;
+ *
+ * @param entity 实体对象
+ * @return 插入成功记录数
+ */</span>
+<span class="token keyword">int</span> <span class="token function">insert</span><span class="token punctuation">(</span>T entity<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="deletebyid"><a href="crud-interface.html#deletebyid" aria-hidden="true" class="header-anchor">#</a> deleteById</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 根据 ID 删除
+ * &lt;/p&gt;
+ *
+ * @param id 主键ID
+ * @return 删除成功记录数
+ */</span>
+<span class="token keyword">int</span> <span class="token function">deleteById</span><span class="token punctuation">(</span>Serializable id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="deletebymap"><a href="crud-interface.html#deletebymap" aria-hidden="true" class="header-anchor">#</a> deleteByMap</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 根据 columnMap 条件，删除记录
+ * &lt;/p&gt;
+ *
+ * @param columnMap 表字段 map 对象
+ * @return 删除成功记录数
+ */</span>
+<span class="token keyword">int</span> <span class="token function">deleteByMap</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Param</span><span class="token punctuation">(</span>Constants<span class="token punctuation">.</span>COLUMN_MAP<span class="token punctuation">)</span> Map<span class="token generics function"><span class="token punctuation">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token punctuation">&gt;</span></span> columnMap<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="delete"><a href="crud-interface.html#delete" aria-hidden="true" class="header-anchor">#</a> delete</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 根据 entity 条件，删除记录
+ * &lt;/p&gt;
+ *
+ * @param wrapper 实体对象封装操作类（可以为 null）
+ * @return 删除成功记录数
+ */</span>
+<span class="token keyword">int</span> <span class="token function">delete</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Param</span><span class="token punctuation">(</span>Constants<span class="token punctuation">.</span>WRAPPER<span class="token punctuation">)</span> Wrapper<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> wrapper<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="deletebatchids"><a href="crud-interface.html#deletebatchids" aria-hidden="true" class="header-anchor">#</a> deleteBatchIds</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 删除（根据ID 批量删除）
+ * &lt;/p&gt;
+ *
+ * @param idList 主键ID列表(不能为 null 以及 empty)
+ * @return 删除成功记录数
+ */</span>
+<span class="token keyword">int</span> <span class="token function">deleteBatchIds</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Param</span><span class="token punctuation">(</span>Constants<span class="token punctuation">.</span>COLLECTION<span class="token punctuation">)</span> Collection<span class="token operator">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">Serializable</span><span class="token operator">&gt;</span> idList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="updatebyid"><a href="crud-interface.html#updatebyid" aria-hidden="true" class="header-anchor">#</a> updateById</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 根据 ID 修改
+ * &lt;/p&gt;
+ *
+ * @param entity 实体对象
+ * @return 修改成功记录数
+ */</span>
+<span class="token keyword">int</span> <span class="token function">updateById</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Param</span><span class="token punctuation">(</span>Constants<span class="token punctuation">.</span>ENTITY<span class="token punctuation">)</span> T entity<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="update"><a href="crud-interface.html#update" aria-hidden="true" class="header-anchor">#</a> update</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 根据 whereEntity 条件，更新记录
+ * &lt;/p&gt;
+ *
+ * @param entity        实体对象 (set 条件值,可为 null)
+ * @param updateWrapper 实体对象封装操作类（可以为 null,里面的 entity 用于生成 where 语句）
+ * @return 修改成功记录数
+ */</span>
+<span class="token keyword">int</span> <span class="token function">update</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Param</span><span class="token punctuation">(</span>Constants<span class="token punctuation">.</span>ENTITY<span class="token punctuation">)</span> T entity<span class="token punctuation">,</span> <span class="token annotation punctuation">@Param</span><span class="token punctuation">(</span>Constants<span class="token punctuation">.</span>WRAPPER<span class="token punctuation">)</span> Wrapper<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> updateWrapper<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="selectbyid"><a href="crud-interface.html#selectbyid" aria-hidden="true" class="header-anchor">#</a> selectById</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 根据 ID 查询
+ * &lt;/p&gt;
+ *
+ * @param id 主键ID
+ * @return 实体
+ */</span>
+T <span class="token function">selectById</span><span class="token punctuation">(</span>Serializable id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="selectbatchids"><a href="crud-interface.html#selectbatchids" aria-hidden="true" class="header-anchor">#</a> selectBatchIds</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 查询（根据ID 批量查询）
+ * &lt;/p&gt;
+ *
+ * @param idList 主键ID列表(不能为 null 以及 empty)
+ * @return 实体集合
+ */</span>
+List<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> <span class="token function">selectBatchIds</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Param</span><span class="token punctuation">(</span>Constants<span class="token punctuation">.</span>COLLECTION<span class="token punctuation">)</span> Collection<span class="token operator">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">Serializable</span><span class="token operator">&gt;</span> idList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="selectbymap"><a href="crud-interface.html#selectbymap" aria-hidden="true" class="header-anchor">#</a> selectByMap</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 查询（根据 columnMap 条件）
+ * &lt;/p&gt;
+ *
+ * @param columnMap 表字段 map 对象
+ * @return 实体集合
+ */</span>
+List<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> <span class="token function">selectByMap</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Param</span><span class="token punctuation">(</span>Constants<span class="token punctuation">.</span>COLUMN_MAP<span class="token punctuation">)</span> Map<span class="token generics function"><span class="token punctuation">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token punctuation">&gt;</span></span> columnMap<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre></div><h3 id="selectone"><a href="crud-interface.html#selectone" aria-hidden="true" class="header-anchor">#</a> selectOne</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 根据 entity 条件，查询一条记录
+ * &lt;/p&gt;
+ *
+ * @param queryWrapper 实体对象
+ * @return 实体
+ */</span>
+T <span class="token function">selectOne</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Param</span><span class="token punctuation">(</span>Constants<span class="token punctuation">.</span>WRAPPER<span class="token punctuation">)</span> Wrapper<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> queryWrapper<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="selectcount"><a href="crud-interface.html#selectcount" aria-hidden="true" class="header-anchor">#</a> selectCount</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 根据 Wrapper 条件，查询总记录数
+ * &lt;/p&gt;
+ *
+ * @param queryWrapper 实体对象
+ * @return 满足条件记录数
+ */</span>
+Integer <span class="token function">selectCount</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Param</span><span class="token punctuation">(</span>Constants<span class="token punctuation">.</span>WRAPPER<span class="token punctuation">)</span> Wrapper<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> queryWrapper<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="selectlist"><a href="crud-interface.html#selectlist" aria-hidden="true" class="header-anchor">#</a> selectList</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 根据 entity 条件，查询全部记录
+ * &lt;/p&gt;
+ *
+ * @param queryWrapper 实体对象封装操作类（可以为 null）
+ * @return 实体集合
+ */</span>
+List<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> <span class="token function">selectList</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Param</span><span class="token punctuation">(</span>Constants<span class="token punctuation">.</span>WRAPPER<span class="token punctuation">)</span> Wrapper<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> queryWrapper<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="selectmaps"><a href="crud-interface.html#selectmaps" aria-hidden="true" class="header-anchor">#</a> selectMaps</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 根据 Wrapper 条件，查询全部记录
+ * &lt;/p&gt;
+ *
+ * @param queryWrapper 实体对象封装操作类（可以为 null）
+ * @return 字段映射对象 Map 集合
+ */</span>
+List<span class="token operator">&lt;</span>Map<span class="token generics function"><span class="token punctuation">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token punctuation">&gt;</span></span><span class="token operator">&gt;</span> <span class="token function">selectMaps</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Param</span><span class="token punctuation">(</span>Constants<span class="token punctuation">.</span>WRAPPER<span class="token punctuation">)</span> Wrapper<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> queryWrapper<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="selectobjs"><a href="crud-interface.html#selectobjs" aria-hidden="true" class="header-anchor">#</a> selectObjs</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 根据 Wrapper 条件，查询全部记录
+ * 注意： 只返回第一个字段的值
+ * &lt;/p&gt;
+ *
+ * @param queryWrapper 实体对象封装操作类（可以为 null）
+ * @return 字段映射对象集合
+ */</span>
+List<span class="token generics function"><span class="token punctuation">&lt;</span>Object<span class="token punctuation">&gt;</span></span> <span class="token function">selectObjs</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Param</span><span class="token punctuation">(</span>Constants<span class="token punctuation">.</span>WRAPPER<span class="token punctuation">)</span> Wrapper<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> queryWrapper<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="selectpage"><a href="crud-interface.html#selectpage" aria-hidden="true" class="header-anchor">#</a> selectPage</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 根据 entity 条件，查询全部记录（并翻页）
+ * &lt;/p&gt;
+ *
+ * @param page         分页查询条件（可以为 RowBounds.DEFAULT）
+ * @param queryWrapper 实体对象封装操作类（可以为 null）
+ * @return 实体分页对象
+ */</span>
+IPage<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> <span class="token function">selectPage</span><span class="token punctuation">(</span>IPage<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> page<span class="token punctuation">,</span> <span class="token annotation punctuation">@Param</span><span class="token punctuation">(</span>Constants<span class="token punctuation">.</span>WRAPPER<span class="token punctuation">)</span> Wrapper<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> queryWrapper<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="selectmapspage"><a href="crud-interface.html#selectmapspage" aria-hidden="true" class="header-anchor">#</a> selectMapsPage</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 根据 Wrapper 条件，查询全部记录（并翻页）
+ * &lt;/p&gt;
+ *
+ * @param page         分页查询条件
+ * @param queryWrapper 实体对象封装操作类
+ * @return 字段映射对象 Map 分页对象
+ */</span>
+IPage<span class="token operator">&lt;</span>Map<span class="token generics function"><span class="token punctuation">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token punctuation">&gt;</span></span><span class="token operator">&gt;</span> <span class="token function">selectMapsPage</span><span class="token punctuation">(</span>IPage<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> page<span class="token punctuation">,</span> <span class="token annotation punctuation">@Param</span><span class="token punctuation">(</span>Constants<span class="token punctuation">.</span>WRAPPER<span class="token punctuation">)</span> Wrapper<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> queryWrapper<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="service-crud-接口"><a href="crud-interface.html#service-crud-%E6%8E%A5%E5%8F%A3" aria-hidden="true" class="header-anchor">#</a> Service CRUD 接口</h2> <div class="tip custom-block"><p class="custom-block-title">说明:</p> <ul><li>通用 Service CRUD 封装<a href="https://gitee.com/baomidou/mybatis-plus/blob/3.0/mybatis-plus-extension/src/main/java/com/baomidou/mybatisplus/extension/service/IService.java" target="_blank" rel="noopener noreferrer">IService<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>接口，进一步封装 CRUD 采用 <code>get 查询单行</code> <code>remove 删除</code> <code>list 查询集合</code> <code>page 分页</code> 前缀命名方式区分 <code>Mapper</code> 层避免混淆，</li> <li>泛型 <code>T</code> 为任意实体对象</li> <li>建议如果存在自定义通用 Service 方法的可能，请创建自己的 <code>IBaseService</code> 继承 <code>Mybatis-Plus</code> 提供的基类</li> <li>对象 <code>Wrapper</code> 为 <a href="wrapper.html">条件构造器</a></li></ul></div> <h3 id="save"><a href="crud-interface.html#save" aria-hidden="true" class="header-anchor">#</a> save</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 插入一条记录（选择字段，策略插入）
+ * &lt;/p&gt;
+ *
+ * @param entity 实体对象
+ */</span>
+<span class="token keyword">boolean</span> <span class="token function">save</span><span class="token punctuation">(</span>T entity<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="savebatch"><a href="crud-interface.html#savebatch" aria-hidden="true" class="header-anchor">#</a> saveBatch</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * 插入（批量）
+ *
+ * @param entityList 实体对象集合
+ * @param batchSize  插入批次数量
+ */</span>
+<span class="token keyword">boolean</span> <span class="token function">saveBatch</span><span class="token punctuation">(</span>Collection<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> entityList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="savebatch-2"><a href="crud-interface.html#savebatch-2" aria-hidden="true" class="header-anchor">#</a> saveBatch</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * 插入（批量）
+ * 
+ * @param entityList 实体对象集合
+ * @param batchSize  插入批次数量
+ */</span>
+<span class="token keyword">boolean</span> <span class="token function">saveBatch</span><span class="token punctuation">(</span>Collection<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> entityList<span class="token punctuation">,</span> <span class="token keyword">int</span> batchSize<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="saveorupdatebatch"><a href="crud-interface.html#saveorupdatebatch" aria-hidden="true" class="header-anchor">#</a> saveOrUpdateBatch</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 批量修改插入
+ * &lt;/p&gt;
+ *
+ * @param entityList 实体对象集合
+ */</span>
+<span class="token keyword">boolean</span> <span class="token function">saveOrUpdateBatch</span><span class="token punctuation">(</span>Collection<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> entityList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="saveorupdatebatch-2"><a href="crud-interface.html#saveorupdatebatch-2" aria-hidden="true" class="header-anchor">#</a> saveOrUpdateBatch</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 批量修改插入
+ * &lt;/p&gt;
+ *
+ * @param entityList 实体对象集合
+ * @param batchSize  每次的数量
+ */</span>
+<span class="token keyword">boolean</span> <span class="token function">saveOrUpdateBatch</span><span class="token punctuation">(</span>Collection<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> entityList<span class="token punctuation">,</span> <span class="token keyword">int</span> batchSize<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="removebyid"><a href="crud-interface.html#removebyid" aria-hidden="true" class="header-anchor">#</a> removeById</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 根据 ID 删除
+ * &lt;/p&gt;
+ *
+ * @param id 主键ID
+ */</span>
+<span class="token keyword">boolean</span> <span class="token function">removeById</span><span class="token punctuation">(</span>Serializable id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="removebymap"><a href="crud-interface.html#removebymap" aria-hidden="true" class="header-anchor">#</a> removeByMap</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 根据 columnMap 条件，删除记录
+ * &lt;/p&gt;
+ *
+ * @param columnMap 表字段 map 对象
+ */</span>
+<span class="token keyword">boolean</span> <span class="token function">removeByMap</span><span class="token punctuation">(</span>Map<span class="token generics function"><span class="token punctuation">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token punctuation">&gt;</span></span> columnMap<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="remove"><a href="crud-interface.html#remove" aria-hidden="true" class="header-anchor">#</a> remove</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 根据 entity 条件，删除记录
+ * &lt;/p&gt;
+ *
+ * @param queryWrapper 实体包装类 {@link com.baomidou.mybatisplus.core.conditions.query.QueryWrapper}
+ */</span>
+<span class="token keyword">boolean</span> <span class="token function">remove</span><span class="token punctuation">(</span>Wrapper<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> queryWrapper<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="removebyids"><a href="crud-interface.html#removebyids" aria-hidden="true" class="header-anchor">#</a> removeByIds</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 删除（根据ID 批量删除）
+ * &lt;/p&gt;
+ *
+ * @param idList 主键ID列表
+ */</span>
+<span class="token keyword">boolean</span> <span class="token function">removeByIds</span><span class="token punctuation">(</span>Collection<span class="token operator">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">Serializable</span><span class="token operator">&gt;</span> idList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="updatebyid-2"><a href="crud-interface.html#updatebyid-2" aria-hidden="true" class="header-anchor">#</a> updateById</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 根据 ID 选择修改
+ * &lt;/p&gt;
+ *
+ * @param entity 实体对象
+ */</span>
+<span class="token keyword">boolean</span> <span class="token function">updateById</span><span class="token punctuation">(</span>T entity<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="update-2"><a href="crud-interface.html#update-2" aria-hidden="true" class="header-anchor">#</a> update</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 根据 whereEntity 条件，更新记录
+ * &lt;/p&gt;
+ *
+ * @param entity        实体对象
+ * @param updateWrapper 实体对象封装操作类 {@link com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper}
+ */</span>
+<span class="token keyword">boolean</span> <span class="token function">update</span><span class="token punctuation">(</span>T entity<span class="token punctuation">,</span> Wrapper<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> updateWrapper<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="updatebatchbyid"><a href="crud-interface.html#updatebatchbyid" aria-hidden="true" class="header-anchor">#</a> updateBatchById</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 根据ID 批量更新
+ * &lt;/p&gt;
+ *
+ * @param entityList 实体对象集合
+ * @param batchSize  更新批次数量
+ */</span>
+<span class="token keyword">boolean</span> <span class="token function">updateBatchById</span><span class="token punctuation">(</span>Collection<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> entityList<span class="token punctuation">,</span> <span class="token keyword">int</span> batchSize<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="saveorupdate"><a href="crud-interface.html#saveorupdate" aria-hidden="true" class="header-anchor">#</a> saveOrUpdate</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * TableId 注解存在更新记录，否插入一条记录
+ * &lt;/p&gt;
+ *
+ * @param entity 实体对象
+ */</span>
+<span class="token keyword">boolean</span> <span class="token function">saveOrUpdate</span><span class="token punctuation">(</span>T entity<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="getbyid"><a href="crud-interface.html#getbyid" aria-hidden="true" class="header-anchor">#</a> getById</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 根据 ID 查询
+ * &lt;/p&gt;
+ *
+ * @param id 主键ID
+ */</span>
+T <span class="token function">getById</span><span class="token punctuation">(</span>Serializable id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="listbyids"><a href="crud-interface.html#listbyids" aria-hidden="true" class="header-anchor">#</a> listByIds</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 查询（根据ID 批量查询）
+ * &lt;/p&gt;
+ *
+ * @param idList 主键ID列表
+ */</span>
+Collection<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> <span class="token function">listByIds</span><span class="token punctuation">(</span>Collection<span class="token operator">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">Serializable</span><span class="token operator">&gt;</span> idList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="listbymap"><a href="crud-interface.html#listbymap" aria-hidden="true" class="header-anchor">#</a> listByMap</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 查询（根据 columnMap 条件）
+ * &lt;/p&gt;
+ *
+ * @param columnMap 表字段 map 对象
+ */</span>
+Collection<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> <span class="token function">listByMap</span><span class="token punctuation">(</span>Map<span class="token generics function"><span class="token punctuation">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token punctuation">&gt;</span></span> columnMap<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="getone"><a href="crud-interface.html#getone" aria-hidden="true" class="header-anchor">#</a> getOne</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 根据 Wrapper，查询一条记录
+ * &lt;/p&gt;
+ *
+ * @param queryWrapper 实体对象封装操作类 {@link com.baomidou.mybatisplus.core.conditions.query.QueryWrapper}
+ * @param throwEx      有多个 result 是否抛出异常
+ */</span>
+T <span class="token function">getOne</span><span class="token punctuation">(</span>Wrapper<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> queryWrapper<span class="token punctuation">,</span> <span class="token keyword">boolean</span> throwEx<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="getmap"><a href="crud-interface.html#getmap" aria-hidden="true" class="header-anchor">#</a> getMap</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 根据 Wrapper，查询一条记录
+ * &lt;/p&gt;
+ *
+ * @param queryWrapper 实体对象封装操作类 {@link com.baomidou.mybatisplus.core.conditions.query.QueryWrapper}
+ */</span>
+Map<span class="token generics function"><span class="token punctuation">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token punctuation">&gt;</span></span> <span class="token function">getMap</span><span class="token punctuation">(</span>Wrapper<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> queryWrapper<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="getobj"><a href="crud-interface.html#getobj" aria-hidden="true" class="header-anchor">#</a> getObj</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 根据 Wrapper，查询一条记录
+ * &lt;/p&gt;
+ *
+ * @param queryWrapper 实体对象封装操作类 {@link com.baomidou.mybatisplus.core.conditions.query.QueryWrapper}
+ */</span>
+Object <span class="token function">getObj</span><span class="token punctuation">(</span>Wrapper<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> queryWrapper<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="count"><a href="crud-interface.html#count" aria-hidden="true" class="header-anchor">#</a> count</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 根据 Wrapper 条件，查询总记录数
+ * &lt;/p&gt;
+ *
+ * @param queryWrapper 实体对象封装操作类 {@link com.baomidou.mybatisplus.core.conditions.query.QueryWrapper}
+ */</span>
+<span class="token keyword">int</span> <span class="token function">count</span><span class="token punctuation">(</span>Wrapper<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> queryWrapper<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="list"><a href="crud-interface.html#list" aria-hidden="true" class="header-anchor">#</a> list</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 查询列表
+ * &lt;/p&gt;
+ *
+ * @param queryWrapper 实体对象封装操作类 {@link com.baomidou.mybatisplus.core.conditions.query.QueryWrapper}
+ */</span>
+List<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> <span class="token function">list</span><span class="token punctuation">(</span>Wrapper<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> queryWrapper<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="page"><a href="crud-interface.html#page" aria-hidden="true" class="header-anchor">#</a> page</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 翻页查询
+ * &lt;/p&gt;
+ *
+ * @param page         翻页对象
+ * @param queryWrapper 实体对象封装操作类 {@link com.baomidou.mybatisplus.core.conditions.query.QueryWrapper}
+ */</span>
+IPage<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> <span class="token function">page</span><span class="token punctuation">(</span>IPage<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> page<span class="token punctuation">,</span> Wrapper<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> queryWrapper<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="listmaps"><a href="crud-interface.html#listmaps" aria-hidden="true" class="header-anchor">#</a> listMaps</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 查询列表
+ * &lt;/p&gt;
+ *
+ * @param queryWrapper 实体对象封装操作类 {@link com.baomidou.mybatisplus.core.conditions.query.QueryWrapper}
+ */</span>
+List<span class="token operator">&lt;</span>Map<span class="token generics function"><span class="token punctuation">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token punctuation">&gt;</span></span><span class="token operator">&gt;</span> <span class="token function">listMaps</span><span class="token punctuation">(</span>Wrapper<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> queryWrapper<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="listobjs"><a href="crud-interface.html#listobjs" aria-hidden="true" class="header-anchor">#</a> listObjs</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 根据 Wrapper 条件，查询全部记录
+ * &lt;/p&gt;
+ *
+ * @param queryWrapper 实体对象封装操作类 {@link com.baomidou.mybatisplus.core.conditions.query.QueryWrapper}
+ */</span>
+List<span class="token generics function"><span class="token punctuation">&lt;</span>Object<span class="token punctuation">&gt;</span></span> <span class="token function">listObjs</span><span class="token punctuation">(</span>Wrapper<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> queryWrapper<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="pagemaps"><a href="crud-interface.html#pagemaps" aria-hidden="true" class="header-anchor">#</a> pageMaps</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * &lt;p&gt;
+ * 翻页查询
+ * &lt;/p&gt;
+ *
+ * @param page         翻页对象
+ * @param queryWrapper 实体对象封装操作类 {@link com.baomidou.mybatisplus.core.conditions.query.QueryWrapper}
+ */</span>
+IPage<span class="token operator">&lt;</span>Map<span class="token generics function"><span class="token punctuation">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token punctuation">&gt;</span></span><span class="token operator">&gt;</span> <span class="token function">pageMaps</span><span class="token punctuation">(</span>IPage<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> page<span class="token punctuation">,</span> Wrapper<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> queryWrapper<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="mapper-层-选装件"><a href="crud-interface.html#mapper-%E5%B1%82-%E9%80%89%E8%A3%85%E4%BB%B6" aria-hidden="true" class="header-anchor">#</a> mapper 层 选装件</h2> <div class="tip custom-block"><p class="custom-block-title">说明:</p> <p>选装件位于 <code>com.baomidou.mybatisplus.extension.injector.methods.additional</code> 包下
+需要配合<a href="sql-injector.html">Sql 注入器</a>使用,<a href="https://gitee.com/baomidou/mybatis-plus-samples/tree/master/mybatis-plus-sample-sql-injector" target="_blank" rel="noopener noreferrer">案例<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a><br>
+使用详细见<a href="https://gitee.com/baomidou/mybatis-plus/tree/3.0/mybatis-plus-extension/src/main/java/com/baomidou/mybatisplus/extension/injector/methods/additional" target="_blank" rel="noopener noreferrer">源码注释<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p></div> <h3 id="insertbatchsomecolumn"><a href="crud-interface.html#insertbatchsomecolumn" aria-hidden="true" class="header-anchor">#</a> <a href="https://gitee.com/baomidou/mybatis-plus/blob/3.0/mybatis-plus-extension/src/main/java/com/baomidou/mybatisplus/extension/injector/methods/additional/InsertBatchSomeColumn.java" target="_blank" rel="noopener noreferrer">insertBatchSomeColumn<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">int</span> <span class="token function">insertBatchSomeColumn</span><span class="token punctuation">(</span>List<span class="token generics function"><span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> entityList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="deletebyidwithfill"><a href="crud-interface.html#deletebyidwithfill" aria-hidden="true" class="header-anchor">#</a> <a href="https://gitee.com/baomidou/mybatis-plus/blob/3.0/mybatis-plus-extension/src/main/java/com/baomidou/mybatisplus/extension/injector/methods/additional/LogicDeleteByIdWithFill.java" target="_blank" rel="noopener noreferrer">deleteByIdWithFill<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">int</span> <span class="token function">deleteByIdWithFill</span><span class="token punctuation">(</span>T entity<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/baomidou/mybatis-plus-doc/edit/master/guide/crud-interface.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <div class="last-updated"><span class="prefix">上次更新: </span> <span class="time">2019-6-10 13:41:33</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="generator.html" class="prev">
+          代码生成器
+        </a></span> <span class="next"><a href="wrapper.html">
+          条件构造器
+        </a>
+        →
+      </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="../assets/js/2.adda90a1.js" defer></script><script src="../assets/js/47.9e6e4107.js" defer></script><script src="../assets/js/app.1ef3374c.js" defer></script>
+  </body>
+</html>
